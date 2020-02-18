@@ -1,33 +1,45 @@
 import React, { Component } from "react";
 import "./App.css";
-import Countries from "./components/countries";
+import Country from "./components/country";
 import SearchBar from "./components/searchbar";
 
 class App extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         countries: []
+         name: "colombia"
       };
-   }
-
-   componentDidMount() {
-      fetch("https://restcountries.eu/rest/v2/all")
-         .then(result => result.json())
-         .then(json => {
-            this.setState({
-               countries: json
-            });
-         });
    }
 
    render() {
       return (
          <div>
             <SearchBar />
-            <Countries countries={this.state.countries} />
+            <Country info={this.state} />
          </div>
       );
+   }
+
+   fetchInfo(url) {
+      fetch(url)
+         .then(result => result.json())
+         .then(json => {
+            this.setState({
+               name: json[0].name,
+               capital: json[0].capital,
+               population: json[0].population
+            });
+         });
+   }
+
+   fetchCountryInfo(name) {
+      let url = "https://restcountries.eu/rest/v2/name/" + name;
+      this.fetchInfo(url);
+   }
+
+   componentDidMount() {
+      let url = "https://restcountries.eu/rest/v2/name/" + this.state.name;
+      this.fetchInfo(url);
    }
 
    // THIS RENDER METHOD RENDERS EACH COUNTRY NAME WITHOUT

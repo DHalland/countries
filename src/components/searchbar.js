@@ -6,12 +6,12 @@ class SearchBar extends Component {
    }
    render() {
       return (
-         <div class="form-group">
-            <label for="formGroupExampleInput"></label>
+         <div className="form-group col-md-4">
+            <label htmlFor="formGroupExampleInput"></label>
             <input
                type="text"
                onClick={this.handleChange}
-               class="form-control"
+               className="searchbox__input typeahead form-control"
                id="formGroupExampleInput"
                placeholder="Search For Country..."
             ></input>
