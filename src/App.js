@@ -24,10 +24,16 @@ class App extends Component {
       fetch(url)
          .then(result => result.json())
          .then(json => {
+            console.log(json);
             this.setState({
                name: json[0].name,
                capital: json[0].capital,
-               population: json[0].population
+               population: json[0].population,
+               region: json[0].region,
+               subregion: json[0].subregion,
+               timezones: json[0].timezones,
+               currencies: json[0].currencies[0].name,
+               languages: json[0].languages[0].name
             });
          });
    }
