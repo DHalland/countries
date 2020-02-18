@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
+import Countries from "./components/countries";
+import SearchBar from "./components/searchbar";
 
 class App extends Component {
    constructor(props) {
@@ -20,17 +22,29 @@ class App extends Component {
    }
 
    render() {
-      var { countries } = this.state;
       return (
-         <div className="App">
-            <ul>
-               {countries.map(country => (
-                  <li key={country.alpha3Code}>{country.name}</li>
-               ))}
-            </ul>
+         <div>
+            <SearchBar />
+            <Countries countries={this.state.countries} />
          </div>
       );
    }
+
+   // THIS RENDER METHOD RENDERS EACH COUNTRY NAME WITHOUT
+   // IMPORTING COUNTRIES.JS
+   //
+   //  render() {
+   //     var { countries } = this.state;
+   //     return (
+   //        <div className="App">
+   //           <ul>
+   //              {countries.map(country => (
+   //                 <li key={country.alpha3Code}>{country.name}</li>
+   //              ))}
+   //           </ul>
+   //        </div>
+   //     );
+   //  }
 
    // THE COMMENTED CODE BELOW IS ANOTHER WAY OF DOING THE SAME THING
    //
