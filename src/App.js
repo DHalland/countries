@@ -3,6 +3,7 @@ import "./App.css";
 import Country from "./components/country";
 import SearchBar from "./components/searchbar";
 
+
 class App extends Component {
    constructor(props) {
       super(props);
@@ -14,8 +15,10 @@ class App extends Component {
    render() {
       return (
          <div>
-            <SearchBar />
+            <div id="top" className="row">
+            <SearchBar name={this.state.name}/>
             <Country info={this.state} />
+            </div>
          </div>
       );
    }
