@@ -42,7 +42,7 @@ class App extends Component {
       let url = "https://restcountries.eu/rest/v2/name/" + name;
       this.fetchInfo(url);
    }
-
+  
    componentDidMount() {
       let url = "https://restcountries.eu/rest/v2/name/" + this.state.name;
       this.fetchInfo(url);
