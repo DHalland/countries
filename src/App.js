@@ -12,11 +12,28 @@ class App extends Component {
       };
    }
 
+   handleEnter = e2 => {
+      if (e2.key === "Enter") {
+         this.setState(
+            {
+               name: e2.target.value
+            },
+            () => {
+               this.fetchCountryInfo(this.state.name);
+            }
+         );
+      }
+   };
+
    render() {
       return (
          <div>
             <div id="top" className="row">
-            <SearchBar name={this.state.name}/>
+            <SearchBar
+               handleEnter={this.handleEnter.bind(this)}
+               name={this.state.name}
+               //fetchCountryInfo={this.fetchCountryInfo.bind(this)}
+            />
             <Country info={this.state} />
             </div>
          </div>
@@ -27,7 +44,7 @@ class App extends Component {
       fetch(url)
          .then(result => result.json())
          .then(json => {
-            console.log(json);
+            // console.log(json);
             this.setState({
                name: json[0].name,
                capital: json[0].capital,
@@ -45,7 +62,7 @@ class App extends Component {
       let url = "https://restcountries.eu/rest/v2/name/" + name;
       this.fetchInfo(url);
    }
-  
+
    componentDidMount() {
       let url = "https://restcountries.eu/rest/v2/name/" + this.state.name;
       this.fetchInfo(url);

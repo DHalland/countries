@@ -3,6 +3,13 @@ import ReactDOM from "react-dom";
 import SearchBar from "./searchbar";
 
 class Country extends Component {
+   searchHandler() {
+      this.setState({
+         country: this.props.info,
+         name: ""
+      });
+   }
+
    render() {
       let country = this.props.info;
       let name = country.name,
