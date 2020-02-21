@@ -3,6 +3,7 @@ body {
    scroll-behavior: smooth;
 }
 
+
 #top{
   height: 100vh;
    background-position: center;
@@ -20,25 +21,29 @@ body {
   }
 
 #name{
-  padding-top: 0px;
-  text-align: center;
+ 
   color: white;
    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-   font-size: large;
-   overflow: hidden;
+
 }
 
+div#name.col-4{
+  padding-top: 0px;
+  max-height: 8vh;
+}
+
+
+
 @media only screen and (max-width: 1000px) {
-  #countryName {
-    font-size: 20px;
+  #countryName{
+    font-size: 3vw;
   }
 }
 @media only screen and (min-width: 1000px) {
-  #countryName {
-    font-size: 40px;
+  #countryName{
+    font-size: 2vw;
   }
 }
-
 
 #info .col-12 {
    height: 90vh;
@@ -69,7 +74,6 @@ body {
 
 #moreInfo {
    height: 100vh;
-   background: url(./colombia2.jpg);
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
@@ -83,6 +87,12 @@ body {
    bottom: 30px;
 }
 
+.form-group.col-8 {
+  padding: 0px;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
 
 .bubble {
   overflow-wrap: break-word;
@@ -183,7 +193,7 @@ body {
   padding: 10px;
   background-color: black;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   opacity: 0.7;
   margin: 20px;
 }
