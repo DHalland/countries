@@ -27,8 +27,10 @@ class App extends Component {
    render() {
       return (
          <div>
+            <div id="top" className="row"></div>
             <SearchBar
                handleEnter={this.handleEnter.bind(this)}
+               name={this.state.name}
                //fetchCountryInfo={this.fetchCountryInfo.bind(this)}
             />
             <Country info={this.state} />

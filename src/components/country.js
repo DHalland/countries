@@ -25,15 +25,18 @@ class Country extends Component {
          <div className="container-fluid">
             <div className="row" id="info">
                <div className="col-12">
-                  <h1>{name}</h1>
-                  <hr></hr>
-                  <p className="left">Capital: {capital}</p>
                   <br></br>
-                  <p className="left">Region: {region}</p>
+                  <p className="bubble">Capital: {capital}</p>
                   <br></br>
-                  <p className="left">SubRegion: {subregion}</p>
+                  <p className="bubble">Region: {region}</p>
                   <br></br>
-                  <p className="left">Population: {population}</p>
+                  <p className="bubble">SubRegion: {subregion}</p>
+                  <br></br>
+                  <p className="bubble">Population: {population}</p>
+                  <br></br>
+                  <p className="bubble">Population: {population}</p>
+                  <br></br>
+                  <p className="bubble">Population: {population}</p>
                   <br></br>
                   <div className="button">
                      <a

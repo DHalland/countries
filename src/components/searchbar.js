@@ -6,24 +6,24 @@ class SearchBar extends Component {
       this.state = { name: "" };
    }
 
-   // handleClick = e1 => {
-   //    this.setState({ name: e1.target.value });
-   //    console.log(e1.target.value);
-   // };
-
    render() {
       return (
-         <div className="form-group col-md-4">
-            <label htmlFor="formGroupExampleInput"></label>
-            <input
-               type="text"
-               //onClick={this.handleClick}
-               //onKeyDown={this.props.fetchCountryInfo}
-               onKeyDown={this.props.handleEnter}
-               className="searchbox__input typeahead form-control"
-               id="formGroupExampleInput"
-               placeholder="Search For Country..."
-            ></input>
+         <div className="container-fluid">
+            <div id="header" className="row">
+               <div id="name" className="col-4">
+                  <h1>{this.props.name}</h1>
+               </div>
+               <div className="form-group col-8">
+                  <label id="search" htmlFor="formGroupExampleInput"></label>
+                  <input
+                     type="text"
+                     onKeyDown={this.props.handleEnter}
+                     className="searchbox__input typeahead form-control"
+                     id="formGroupExampleInput"
+                     placeholder="Search For Country..."
+                  ></input>
+               </div>
+            </div>
          </div>
       );
    }
