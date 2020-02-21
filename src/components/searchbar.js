@@ -11,7 +11,7 @@ class SearchBar extends Component {
          <div className="container-fluid">
             <div id="header" className="row">
                <div id="name" className="col-4">
-                  <h1>{this.props.name}</h1>
+                  <h3>{this.props.name}</h3>
                </div>
                <div className="form-group col-8">
                   <label id="search" htmlFor="formGroupExampleInput"></label>

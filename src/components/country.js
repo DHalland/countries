@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-// import SearchBar from "./searchbar";
+import SearchBar from "./searchbar";
 
 class Country extends Component {
    searchHandler() {
