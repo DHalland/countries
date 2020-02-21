@@ -13,9 +13,14 @@ class App extends Component {
 
    handleEnter = e2 => {
       if (e2.key === "Enter") {
-         this.setState({
-            name: e2.target.value
-         });
+         this.setState(
+            {
+               name: e2.target.value
+            },
+            () => {
+               this.fetchCountryInfo(this.state.name);
+            }
+         );
       }
    };
 
