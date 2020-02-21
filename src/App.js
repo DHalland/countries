@@ -33,12 +33,12 @@ class App extends Component {
       fetch(url)
          .then(result => result.json())
          .then(json => {
-            if (json[0] !== undefined) {
+           // if (json[0] !== undefined) {
                this.setState({
                   image1: json.results[0].urls.full,
                   image2: json.results[1].urls.full
                });
-            }
+           // }
          });
    }
 
