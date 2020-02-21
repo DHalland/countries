@@ -25,10 +25,14 @@ class App extends Component {
       }
    };
 
+   
+
    render() {
+      let api_key = process.env.REACT_APP_API_KEY;
+      let backgroundimg = 'https://api.unsplash.com/search/photos?query=' + this.state.name + "&orientation=landscape&client_id=" + api_key;
       return (
          <div>
-            <div id="top" className="row">
+            <div id="top" style={{backgroundImage: "url(" + backgroundimg + ")"}} className="row">
             <SearchBar
                handleEnter={this.handleEnter.bind(this)}
                name={this.state.name}

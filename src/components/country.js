@@ -11,6 +11,7 @@ class Country extends Component {
    }
 
    render() {
+      let api_key = process.env.REACT_APP_API_KEY;
       let country = this.props.info;
       let name = country.name,
          population = country.population,
