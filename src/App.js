@@ -3,12 +3,16 @@ import "./App.css";
 import Country from "./components/country";
 import SearchBar from "./components/searchbar";
 
-
 class App extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         name: "colombia"
+         name: "colombia",
+         flag: "https://restcountries.eu/data/col.svg",
+         image1:
+            "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjExNjgyOX0",
+         image2: 
+            "https://images.unsplash.com/photo-1536308037887-165852797016?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
       };
    }
 
@@ -25,20 +29,42 @@ class App extends Component {
       }
    };
 
-   
+   fetchImages(url) {
+      fetch(url)
+         .then(result => result.json())
+         .then(json => {
+            this.setState({ 
+               image1: json.results[0].urls.full,
+               image2: json.results[1].urls.full
+             });
+         });
+   }
 
    render() {
-      let api_key = process.env.REACT_APP_API_KEY;
-      let backgroundimg = 'https://api.unsplash.com/search/photos?query=' + this.state.name + "&orientation=landscape&client_id=" + api_key;
+      const api_key = process.env.REACT_APP_API_KEY;
+      let countryName= ""
+      if(this.state.name == "United States of America"){ countryName = "USA"}
+      else{countryName = this.state.name}
+      let backgroundimg =
+         "https://api.unsplash.com/search/photos?query=" +
+         countryName
+         +
+         "&orientation=landscape&client_id=" +
+         api_key;
+      this.fetchImages(backgroundimg);
       return (
          <div>
-            <div id="top" style={{backgroundImage: "url(" + backgroundimg + ")"}} className="row">
-            <SearchBar
-               handleEnter={this.handleEnter.bind(this)}
-               name={this.state.name}
-               //fetchCountryInfo={this.fetchCountryInfo.bind(this)}
-            />
-            <Country info={this.state} />
+            <div
+               id="top"
+               style={{ backgroundImage: "url(" + this.state.image1 + ")" }}
+               className="row"
+            >
+               <SearchBar
+                  handleEnter={this.handleEnter.bind(this)}
+                  name={this.state.name}
+                  //fetchCountryInfo={this.fetchCountryInfo.bind(this)}
+               />
+               <Country background={this.state.image2} flag={this.state.flag} info={this.state} />
             </div>
          </div>
       );
@@ -50,14 +76,18 @@ class App extends Component {
          .then(json => {
             // console.log(json);
             this.setState({
+               alpha2Code: json[0].alpha2Code,
+               numericCode: json[0].numericCode,
                name: json[0].name,
                capital: json[0].capital,
                population: json[0].population,
                region: json[0].region,
                subregion: json[0].subregion,
-               timezones: json[0].timezones,
+               timezones: json[0].timezones.map(x => x + ' '),
                currencies: json[0].currencies[0].name,
-               languages: json[0].languages[0].name
+               languages: json[0].languages[0].name,
+               flag: json[0].flag,
+               borders: json[0].borders.map(x => x + ' '),
             });
          });
    }
