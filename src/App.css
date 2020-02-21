@@ -171,4 +171,14 @@ hr {
   }
 }
 
-
+.left{
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  opacity: 0.7;
+  margin: 20px;
+}
