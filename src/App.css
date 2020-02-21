@@ -12,7 +12,6 @@ body {
    margin: 0px;
 }
 
-
 #header {
   border: 2px solid black;
   height: 10vh;
@@ -29,9 +28,7 @@ body {
    font-size: large;
 }
 
-hr {
-   border: 1px solid black;
-}
+
 
 #info .col-12 {
    height: 90vh;
@@ -75,6 +72,7 @@ hr {
    width: 100px;
    bottom: 30px;
 }
+
 
 .bubble {
   overflow-wrap: break-word;
