@@ -33,17 +33,19 @@ class App extends Component {
       fetch(url)
          .then(result => result.json())
          .then(json => {
-            this.setState({
-               image1: json.results[0].urls.full,
-               image2: json.results[1].urls.full
-            });
+            if (json[0] !== undefined) {
+               this.setState({
+                  image1: json.results[0].urls.full,
+                  image2: json.results[1].urls.full
+               });
+            }
          });
    }
 
    render() {
       const api_key = process.env.REACT_APP_API_KEY;
       let countryName = "";
-      if (this.state.name == "United States of America") {
+      if (this.state.name === "United States of America") {
          countryName = "USA";
       } else {
          countryName = this.state.name;
@@ -53,7 +55,9 @@ class App extends Component {
          countryName +
          "&orientation=landscape&client_id=" +
          api_key;
+      console.log(backgroundimg);
       this.fetchImages(backgroundimg);
+
       return (
          <div>
             <div
@@ -64,7 +68,6 @@ class App extends Component {
                <SearchBar
                   handleEnter={this.handleEnter.bind(this)}
                   name={this.state.name}
-                  //fetchCountryInfo={this.fetchCountryInfo.bind(this)}
                />
                <Country
                   background={this.state.image2}
@@ -80,21 +83,22 @@ class App extends Component {
       fetch(url)
          .then(result => result.json())
          .then(json => {
-            // console.log(json);
-            this.setState({
-               alpha2Code: json[0].alpha2Code,
-               numericCode: json[0].numericCode,
-               name: json[0].name,
-               capital: json[0].capital,
-               population: json[0].population,
-               region: json[0].region,
-               subregion: json[0].subregion,
-               timezones: json[0].timezones.map(x => x + " "),
-               currencies: json[0].currencies[0].name,
-               languages: json[0].languages[0].name,
-               flag: json[0].flag,
-               borders: json[0].borders.map(x => x + " ")
-            });
+            if (json[0] !== undefined) {
+               this.setState({
+                  alpha2Code: json[0].alpha2Code,
+                  numericCode: json[0].numericCode,
+                  name: json[0].name,
+                  capital: json[0].capital,
+                  population: json[0].population,
+                  region: json[0].region,
+                  subregion: json[0].subregion,
+                  timezones: json[0].timezones.map(x => x + " "),
+                  currencies: json[0].currencies[0].name,
+                  languages: json[0].languages[0].name,
+                  flag: json[0].flag,
+                  borders: json[0].borders.map(x => x + " ")
+               });
+            }
          });
    }
 
