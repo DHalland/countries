@@ -3,12 +3,13 @@ import "./App.css";
 import Country from "./components/country";
 import SearchBar from "./components/searchbar";
 
-
 class App extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         name: "colombia"
+         name: "colombia",
+         flag:
+            "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjExNjgyOX0"
       };
    }
 
@@ -25,20 +26,35 @@ class App extends Component {
       }
    };
 
-   
+   fetchFlag(url) {
+      fetch(url)
+         .then(result => result.json())
+         .then(json => {
+            this.setState({ flag: json.results[0].urls.full });
+         });
+   }
 
    render() {
-      let api_key = process.env.REACT_APP_API_KEY;
-      let backgroundimg = 'https://api.unsplash.com/search/photos?query=' + this.state.name + "&orientation=landscape&client_id=" + api_key;
+      const api_key = process.env.REACT_APP_API_KEY;
+      let backgroundimg =
+         "https://api.unsplash.com/search/photos?query=" +
+         this.state.name +
+         "&orientation=landscape&client_id=" +
+         api_key;
+      this.fetchFlag(backgroundimg);
       return (
          <div>
-            <div id="top" style={{backgroundImage: "url(" + backgroundimg + ")"}} className="row">
-            <SearchBar
-               handleEnter={this.handleEnter.bind(this)}
-               name={this.state.name}
-               //fetchCountryInfo={this.fetchCountryInfo.bind(this)}
-            />
-            <Country info={this.state} />
+            <div
+               id="top"
+               style={{ backgroundImage: "url(" + this.state.flag + ")" }}
+               className="row"
+            >
+               <SearchBar
+                  handleEnter={this.handleEnter.bind(this)}
+                  name={this.state.name}
+                  //fetchCountryInfo={this.fetchCountryInfo.bind(this)}
+               />
+               <Country info={this.state} />
             </div>
          </div>
       );
