@@ -7,12 +7,12 @@ class App extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         name: "colombia",
-         flag: "https://restcountries.eu/data/col.svg",
+         name: "switzerland",
+         flag: "https://restcountries.eu/data/che.svg",
          image1:
-            "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjExNjgyOX0",
+            "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
          image2:
-            "https://images.unsplash.com/photo-1536308037887-165852797016?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
+            "https://images.unsplash.com/photo-1527095655060-4026c4af2b25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
       };
    }
 
